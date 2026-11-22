@@ -8,7 +8,7 @@ const CONTROLS_TEXT := """Drive  W / S   or   RT / LT
 Steer  A / D   or   left stick
 Look  mouse   or   right stick      Zoom  wheel   or   D-pad
 Handbrake  Space / A      Reset car  R / Y
-Debug  F3      Free mouse  Esc"""
+Time, clouds & weather  Esc / Start      Debug  F3"""
 
 var _car: Car
 var _debug: Label

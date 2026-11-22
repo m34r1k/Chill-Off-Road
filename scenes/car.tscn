@@ -70,6 +70,20 @@ mesh = SubResource("BoxMesh_light")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.12, -1.96)
 mesh = SubResource("BoxMesh_light")
 
+[node name="BeamL" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9962, 0.0872, 0, -0.0872, 0.9962, -0.55, 0.12, -2.0)
+light_color = Color(1, 0.93, 0.8, 1)
+light_energy = 0.0
+spot_range = 45.0
+spot_angle = 28.0
+
+[node name="BeamR" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9962, 0.0872, 0, -0.0872, 0.9962, 0.55, 0.12, -2.0)
+light_color = Color(1, 0.93, 0.8, 1)
+light_energy = 0.0
+spot_range = 45.0
+spot_angle = 28.0
+
 [node name="WheelFL" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, -0.2, -1.35)
 script = ExtResource("2_wheel")

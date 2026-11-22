@@ -90,7 +90,7 @@ func simulate(car: Car, drive_force: float, brake_force: float, hold: bool, delt
 		_parked = false
 
 	# Grip limit: the harder the tyre is pressed down, the more it can push.
-	var tyre_force := Vector2(longitudinal, lateral).limit_length(wheel_load * grip)
+	var tyre_force := Vector2(longitudinal, lateral).limit_length(wheel_load * grip * car.surface_grip)
 
 	car.apply_force(up * wheel_load + forward * tyre_force.x + side * tyre_force.y, hit_offset)
 

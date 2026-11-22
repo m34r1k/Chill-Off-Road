@@ -26,10 +26,15 @@ extends RigidBody3D
 
 var wheels: Array[Wheel] = []
 var spawn_transform := Transform3D.IDENTITY
+var surface_grip := 1.0 ## Multiplies tyre grip; weather lowers it slightly when wet.
 
 var _steer := 0.0
 var _flipped_time := 0.0
 var _recovering := false
+var _headlights_on := false
+
+@onready var _beams: Array[SpotLight3D] = [$BeamL, $BeamR]
+@onready var _lamp_material: StandardMaterial3D = ($HeadlightL.mesh as BoxMesh).material
 
 
 func _ready() -> void:
@@ -104,6 +109,17 @@ func grounded_wheel_count() -> int:
 		if wheel.grounded:
 			count += 1
 	return count
+
+
+## Fades the headlights on or off.
+func set_headlights(on: bool) -> void:
+	if on == _headlights_on:
+		return
+	_headlights_on = on
+	var tween := create_tween().set_parallel()
+	for beam in _beams:
+		tween.tween_property(beam, "light_energy", 5.0 if on else 0.0, 0.8)
+	tween.tween_property(_lamp_material, "emission_energy_multiplier", 4.0 if on else 0.6, 0.8)
 
 
 ## Teleports the car and makes this its respawn point.
